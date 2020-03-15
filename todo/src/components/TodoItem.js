@@ -1,9 +1,9 @@
 import React from 'react';
 
-function TodoItem({item}){
+function TodoItem({item, dispatch}){
 
     const toggleCompleted = e => {
-        console.log('toggled', e.target.id);
+        dispatch({type: 'TOGGLE_COMPLETED', id: e.target.id * 1});
     }
 
     return(

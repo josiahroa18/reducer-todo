@@ -14,6 +14,10 @@ function TodoAdd({dispatch}){
         setValue(e.target.value);
     }
 
+    const handleClear = () => {
+        dispatch({type: 'CLEAR_COMPLETED'});
+    }
+
     return(
         <div className='form-container'>
             <form onSubmit={handleSubmit}>
@@ -21,7 +25,7 @@ function TodoAdd({dispatch}){
                 <input onChange={handleChange}></input>
                 <button type='submit'>Add Item</button>
             </form>
-            <button>Clear Completed</button>
+            <button onClick={handleClear}>Clear Completed</button>
         </div>
         
     );

@@ -12,19 +12,30 @@ export const initialState = [
 ]
 
 export const formReducer = (state, action) => {
-    if(action.type === 'ADD_ITEM'){
-        return [
-            ...state,
-            {
-                item: action.payload,
-                complete: false,
-                id: Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 4)
+    switch(action.type){
+        case 'ADD_ITEM':
+            return [
+                ...state,
+                {
+                    item: action.payload,
+                    complete: false,
+                    id: Date.now()
+                }
+            ];
+        case 'CLEAR_COMPLETED':
+            return [...state].filter(item => {
+                return !item.completed
+            });
+        case 'TOGGLE_COMPLETED':
+            for(let i=0; i<state.length; i++){
+                if(state[i].id === action.id){
+                    console.log(state[i]);
+                    state[i] = {
+                        ...state[i],
+                        completed: !state[i].completed
+                    }
+                }
             }
-        ]
-    }
-    if(action.type === 'CLEAR_COMPLETED'){
-        return [...state].filter(item => {
-            return !item.completed
-        })
+            return state;
     }
 }
