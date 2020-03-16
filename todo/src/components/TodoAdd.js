@@ -22,7 +22,7 @@ function TodoAdd({dispatch}){
         <div className='form-container'>
             <form onSubmit={handleSubmit}>
                 <label>New Todo Item:</label>
-                <input onChange={handleChange}></input>
+                <input onChange={handleChange} placeholder='task'></input>
                 <button type='submit'>Add Item</button>
             </form>
             <button onClick={handleClear}>Clear Completed</button>
